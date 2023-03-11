@@ -1,5 +1,7 @@
 package rocks.zipcodewilmington.tictactoe;
 
+import java.sql.SQLOutput;
+
 /**
  * @author leon on 6/22/18.
  */
@@ -12,18 +14,28 @@ public class Board {
     }
 
     public Boolean isInFavorOfX() {
-        return null;
+        return (horizontalWin('X') || verticalWin('X') || diagonalWin('X'));
     }
 
     public Boolean isInFavorOfO() {
-        return null;
+
+        return (horizontalWin('O') || verticalWin('O') || diagonalWin('O'));
     }
 
     public Boolean isTie() {
-        return null;
+
+        return isInFavorOfO() && isInFavorOfX();
+
     }
 
     public String getWinner() {
+        if(isInFavorOfX()){
+            return "X";
+        } else if (isInFavorOfO()){
+            return "O";
+        }else if (isTie()){
+            System.out.println("Tie");
+        }
         return null;
     }
 
